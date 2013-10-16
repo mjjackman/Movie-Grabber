@@ -47,6 +47,11 @@ class MovieServerTest < Test::Unit::TestCase
     assert_equal /shark/, last_response.body
   end
 
+  def test_visiting_a_missing_film_page
+    get '/matrix'
+    assert_equal 404, last_response.status
+  end
+
   def test_new_film_page
     get '/new'
     assert last_response.ok?
