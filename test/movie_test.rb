@@ -1,6 +1,6 @@
 require_relative './helper'
 
-class MovieGrabberTest < Test::Unit::TestCase
+class MovieTest < Test::Unit::TestCase
 
   def test_get_film_info_method
     Movie.get_film_info("jaws")
