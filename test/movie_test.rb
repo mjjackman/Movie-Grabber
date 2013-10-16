@@ -33,7 +33,7 @@ class MovieTest < Test::Unit::TestCase
 	end
 
   def test_get_film_info_method
-    Movie.get_film_info("jaws")
+    #Movie.get_film_info("jaws")
 
     # Don't forget to create your movies table first, using sqlite3...
     movies = @collection.find(:title => 'jaws')
