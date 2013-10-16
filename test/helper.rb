@@ -1,8 +1,10 @@
 require 'test/unit'
+require 'rack/test'
 require 'httparty'
 require 'json'
 require 'pry'
 require 'mongo'
+require 'mocha'
 require_relative '../movie'
 
 class Test::Unit::TestCase

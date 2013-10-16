@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'mongo'
 require 'pry'
+require 'httparty'
 require_relative 'movie'
 
 get '/' do
