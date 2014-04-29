@@ -24,9 +24,9 @@ class MovieServerTest < Test::Unit::TestCase
     assert last_response.ok?
     assert_match /Jaws/, last_response.body
     assert_match /Roy Scheider/, last_response.body
-    assert_equal /Spielberg/, last_response.body
-    assert_equal /1975/, last_response.body
-    assert_equal /shark/, last_response.body
+    assert_match /Spielberg/, last_response.body
+    assert_match /1975/, last_response.body
+    assert_match /shark/, last_response.body
   end
 
   def test_finding_a_film_saves_it_in_the_db
@@ -42,9 +42,9 @@ class MovieServerTest < Test::Unit::TestCase
     assert last_response.ok?
     assert_match /Jaws/, last_response.body
     assert_match /Roy Scheider/, last_response.body
-    assert_equal /Spielberg/, last_response.body
-    assert_equal /1975/, last_response.body
-    assert_equal /shark/, last_response.body
+    assert_match /Spielberg/, last_response.body
+    assert_match /1975/, last_response.body
+    assert_match /shark/, last_response.body
   end
 
   def test_visiting_a_missing_film_page
