@@ -23,7 +23,8 @@ class MovieAppTest < MiniTest::Test
   end
 
   def test_finding_a_film_saves_it_in_the_db
-    HTTParty.expects(:get).once
+    mock_data = File.read('test/jaws.json')
+    HTTParty.expects(:get).returns(mock_data).once
     post '/film', { :name => "Jaws"}
     assert_equal 1, Movie.count
     post '/film', { :name => "Jaws"}
