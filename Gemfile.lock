@@ -22,6 +22,7 @@ GEM
       slop (~> 3.6)
     coderay (1.1.0)
     columnize (0.9.0)
+    database_cleaner (1.4.0)
     debugger-linecache (1.2.0)
     httparty (0.13.3)
       json (~> 1.8)
@@ -46,6 +47,8 @@ GEM
       rack
     rack-protection (1.5.3)
       rack
+    rack-test (0.6.3)
+      rack (>= 1.0)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -64,12 +67,14 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  database_cleaner
   httparty
   json
   mocha
   pry-byebug
   rack (< 1.6)
   rack-flash3
+  rack-test
   sinatra
   sqlite3
   standalone_migrations
