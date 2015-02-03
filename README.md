@@ -7,16 +7,25 @@ We're going to make a little program that grabs information about films and stor
 1. Fork this repo, and git clone your own copy as normal.
 2. Run bundle
 ```bundle```
-3. Run the test using
+3. Create a database
+> rake db:create
+4. Run the Movie test using
 ```ruby test/movie_test.rb```
+
+Take a look at the pry output, and see what information we're getting from OMDB.
+
+5. Design a suitable migration to store the values of a film in the database.
+Migrate both your development and test databases, and add code to your test to
+ensure that you can call the `Movie.get_film_info` method and return a Movie object.
+
+6. Use your code in the movie app, and make the tests pass. Note that the actual
+HTTP requests are stubbed out for testing purposes.
+
 ```ruby test/movie_app_test.rb```
 
-You should get a binding.pry prompt with film information for "Jaws". We're going to extend this program to make a database.
 
 # TODO
 
-* Finish the get_film_info method, so that it takes information out of the movie_info hash and stores it in the database.
-* Update your test, so that you can make sure that the movie is stored correctly.
 * How could we make our program grab more than one movie?
 * Add a method to print all the movies in the database
 * Add a method to search for all the movies in the database.

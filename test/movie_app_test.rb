@@ -1,13 +1,6 @@
 require_relative './helper'
-require_relative '../movie_app'
 
-class MovieServerTest < Test::Unit::TestCase
-  include Rack::Test::Methods
-
-  def app
-    Sinatra::Application
-  end
-
+class MovieAppTest < MiniTest::Test
   def test_welcome_page
     get '/'
     assert last_response.ok?
@@ -32,7 +25,7 @@ class MovieServerTest < Test::Unit::TestCase
   def test_finding_a_film_saves_it_in_the_db
     HTTParty.expects(:get).once
     post '/film', { :name => "Jaws"}
-    assert_equal 1, @collection.count
+    assert_equal 1, Movie.count
     post '/film', { :name => "Jaws"}
   end
 
@@ -60,10 +53,10 @@ class MovieServerTest < Test::Unit::TestCase
   def test_create_film
     m = Movie.new
     m.title = "Jaws"
-    m.save
+    m.save!
 
     post '/create', { "title" => "Jaws 2"}
-    assert_equal 1, @collection.find("title" => "Jaws 2").count
+    assert_equal 1, Movie.find_by("title" => "Jaws 2").count
   end
 
   def test_edit_film_page
@@ -74,11 +67,11 @@ class MovieServerTest < Test::Unit::TestCase
   def test_update_film
     m = Movie.new
     m.title = "Jaws"
-    m.save
+    m.save!
 
     post '/update', { "_id" => m.id, "title" => "Jaws 2"}
 
-    assert_equal 1, @collection.find("title" => "Jaws 2").count
+    assert_equal 1, Movie.find_by("title" => "Jaws 2").count
   end
 
 end

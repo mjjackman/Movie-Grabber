@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'mongo'
+require 'sqlite3'
 require 'pry'
 require 'httparty'
 require_relative 'movie'

@@ -1,5 +1,4 @@
-class Movie
-
+class Movie < ActiveRecord::Base
   # Add attr_accessors for the values you want to store...
 
   def self.get_film_info(name)
