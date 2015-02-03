@@ -2,7 +2,17 @@ require 'sinatra'
 require 'sqlite3'
 require 'pry'
 require 'httparty'
+require 'active_record'
 require_relative 'movie'
+
+configure do
+  db_config = YAML.load_file('db/config.yml')["development"]
+
+  ActiveRecord::Base.establish_connection(
+    :adapter => db_config["adapter"],
+    :database => db_config["database"]
+  )
+end
 
 get '/' do
   # Just have a nice welcome page
