@@ -2,14 +2,14 @@ class Movie < ActiveRecord::Base
   def self.get_film_info(name)
     imdb_data = HTTParty.get("http://www.omdbapi.com/?t=#{name}")
     movie_info = JSON(imdb_data)
-    binding.pry
-
-    # Create a Movie object...
-    m = Movie.new
-
-    # Fill in the attributes...
-
-    # Store me in a database...
+    m = Movie.new({
+      :title => movie_info["Title"],
+      :year => movie_info["Year"],
+      :directors => movie_info["Director"],
+      :actors => movie_info["Actors"],
+      :description => movie_info["Plot"]
+    })
+    m.save!
+    m
   end
-
 end

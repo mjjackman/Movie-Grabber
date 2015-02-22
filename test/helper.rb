@@ -30,5 +30,6 @@ class MiniTest::Test
 
   def teardown
     DatabaseCleaner.clean
+    CreateMovies.new.down
   end
 end
