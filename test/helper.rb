@@ -21,7 +21,7 @@ class MiniTest::Test
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.start
 
-    require './db/migrate/create_movies'
+    require './db/migrate/001_create_movies'
     CreateMovies.new.up
 
     mock_data = File.read('test/jaws.json')
