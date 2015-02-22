@@ -29,7 +29,6 @@ class MovieAppTest < MiniTest::Test
     post '/film', { :name => "Jaws"}
 
     # Redirect to your show page that displays movie data
-    assert last_response.redirect?
     follow_redirect!
 
     assert_equal last_request.path, '/jaws'
