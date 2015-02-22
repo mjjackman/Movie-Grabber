@@ -19,6 +19,11 @@ get '/' do
   erb :home
 end
 
+get '/:name' do
+  @movie = Movie.find_by(:title => params[:name].capitalize)
+  @movie ? erb(:show) : 404
+end
+
 post '/film' do
   # Search for a Movie
 

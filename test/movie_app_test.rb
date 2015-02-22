@@ -7,11 +7,16 @@ class MovieAppTest < MiniTest::Test
   end
 
   def test_visiting_a_film_page
-    Movie.create(:title => "Jaws")
+    Movie.create!(:title => "Jaws")
     get '/jaws'
 
     assert last_response.ok?
     assert_match /Jaws/, last_response.body
+  end
+
+  def test_visiting_a_missing_film_page
+    get '/matrix'
+    assert_equal 404, last_response.status
   end
 
   def test_missing_name_redirects_home
@@ -40,11 +45,6 @@ class MovieAppTest < MiniTest::Test
     assert_equal 1, Movie.count
     post '/film', { :name => "Jaws"}
     assert_equal 1, Movie.count
-  end
-
-  def test_visiting_a_missing_film_page
-    get '/matrix'
-    assert_equal 404, last_response.status
   end
 
   def test_new_film_page
