@@ -6,11 +6,11 @@ We're going to make a little program that grabs information about films and stor
 
 1. Fork this repo, and git clone your own copy as normal.
 2. Run bundle
-```bundle```
+> bundle
 3. Create a database
 > rake db:create
 4. Run the Movie test using
-```ruby test/movie_test.rb```
+> ruby test/models/movie_test.rb
 
 Take a look at the pry output, and see what information we're getting from OMDB.
 
@@ -21,7 +21,7 @@ ensure that you can call the `Movie.get_film_info` method and return a Movie obj
 6. Use your code in the movie app, and make the tests pass. Note that the actual
 HTTP requests are stubbed out for testing purposes.
 
-```ruby test/movie_app_test.rb```
+> ruby test/movie_app_test.rb
 
 
 # TODO

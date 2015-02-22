@@ -2,8 +2,9 @@ require 'sinatra'
 require 'sqlite3'
 require 'pry'
 require 'httparty'
+require 'json'
 require 'active_record'
-require_relative 'movie'
+require_relative 'models/movie'
 
 configure do
   db_config = YAML.load_file('db/config.yml')["development"]

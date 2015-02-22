@@ -1,14 +1,9 @@
 require 'minitest/autorun'
 require 'rack/test'
-require 'httparty'
-require 'json'
-require 'pry'
 require 'mocha/setup'
-require 'active_record'
 require 'database_cleaner'
 
-require_relative '../movie'
-require_relative '../movie_app'
+require './movie_app'
 
 class MiniTest::Test
   include Rack::Test::Methods

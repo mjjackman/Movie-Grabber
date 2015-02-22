@@ -1,4 +1,4 @@
-require_relative './helper'
+require './test/helper'
 
 class MovieAppTest < MiniTest::Test
   def test_welcome_page

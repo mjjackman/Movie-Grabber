@@ -1,4 +1,4 @@
-require_relative './helper'
+require './test/helper'
 
 class MovieTest < MiniTest::Test
 
