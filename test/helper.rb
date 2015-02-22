@@ -20,6 +20,9 @@ class MiniTest::Test
 
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.start
+
+    mock_data = File.read('test/jaws.json')
+    HTTParty.stubs(:get).returns(mock_data)
   end
 
   def teardown

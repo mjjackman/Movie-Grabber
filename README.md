@@ -14,9 +14,8 @@ We're going to make a little program that grabs information about films and stor
 
 Take a look at the pry output, and see what information we're getting from OMDB.
 
-5. Design a suitable migration to store the values of a film in the database.
-Migrate both your development and test databases, and add code to your test to
-ensure that you can call the `Movie.get_film_info` method and return a Movie object.
+5. Design a suitable migration or use SQL commands to store the values of a film in the database.
+Migrate both your development and test databases, and add code to your test to ensure that you can call the `Movie.get_film_info` method and return a Movie object.
 
 6. Use your code in the movie app, and make the tests pass. Note that the actual
 HTTP requests are stubbed out for testing purposes.
