@@ -16,18 +16,12 @@ configure do
 end
 
 get '/' do
-  # Just have a nice welcome page
+  erb :home
 end
 
 post '/film' do
   # Search for a Movie
-  # HINT - what is in params ?
-  binding.pry
 
   # Lookup the film information on the web
-  film = Movie.get_film_info("jaws")
-
-  # store the film in the database
-
-  # Display the movie in the page
+  film = Movie.get_film_info(params[:name])
 end
