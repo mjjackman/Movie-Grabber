@@ -10,7 +10,7 @@ We're going to make a little program that grabs information about films and stor
 3. Create a database
 > rake db:create
 4. Run the Movie test using
-> ruby test/models/movie_test.rb
+> bundle exec ruby test/models/movie_test.rb
 
 Take a look at the pry output, and see what information we're getting from OMDB.
 
@@ -20,7 +20,7 @@ Migrate both your development and test databases, and add code to your test to e
 6. Use your code in the movie app, and make the tests pass. Note that the actual
 HTTP requests are stubbed out for testing purposes.
 
-> ruby test/movie_app_test.rb
+> bundle exec ruby test/movie_app_test.rb
 
 
 # TODO
