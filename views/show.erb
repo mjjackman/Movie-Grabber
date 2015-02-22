@@ -3,6 +3,20 @@
   <title><%= @movie.title %></title>
 </head>
 <body>
-  <h1><%= @movie.title %></title>
+  <h1><%= @movie.title %></h1>
+
+  <dl>
+    <dt>Year</dt>
+    <dd><%= @movie.year %>
+
+    <dt>Director</dt>
+    <dd><%= @movie.directors %>
+
+    <dt>Actors</dt>
+    <dd><%= @movie.actors.join(", ") %>
+  </dl>
+
+  <h3>Plot</h3>
+  <p><%= @movie.description %></p>
 </body>
 </html>

@@ -28,7 +28,7 @@ post '/film' do
   redirect '/' if params[:name].blank?
 
   @movie = Movie.find_by(:title => params[:name].capitalize) ||
-  @movie.get_film_info(params[:name])
+  Movie.get_film_info(params[:name])
 
   redirect "/#{@movie.title.downcase}"
 end
