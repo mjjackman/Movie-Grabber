@@ -8,8 +8,10 @@ class MovieTest < MiniTest::Test
     movies = Movie.where(:title => 'Jaws')
     assert_equal 1, movies.length
     assert_equal "Jaws", movies.first.title
-
-    # Add other parts to your test here...
+    assert_match /Roy Scheider/, movies.first.actors
+    assert_match /Spielberg/, movies.first.directors
+    assert_match /1975/, movies.first.year
+    assert_match /shark/, movies.first.description
   end
 
 end
