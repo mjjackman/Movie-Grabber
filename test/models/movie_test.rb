@@ -9,7 +9,7 @@ class MovieTest < MiniTest::Test
     assert_equal 1, movies.length
     assert_equal "Jaws", movies.first.title
     assert_match /Roy Scheider/, movies.first.actors
-    assert_match /Spielberg/, movies.first.directors
+    assert_match /Spielberg/, movies.first.director
     assert_match /1975/, movies.first.year
     assert_match /shark/, movies.first.description
   end
