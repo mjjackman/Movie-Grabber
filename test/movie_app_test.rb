@@ -20,12 +20,14 @@ class MovieAppTest < MiniTest::Test
   end
 
   def test_missing_name_redirects_home
+    skip
     post '/film', { :name => ""}
     follow_redirect!
     assert_equal last_request.path, '/'
   end
 
   def test_finding_a_film_works
+    skip
     post '/film', { :name => "Jaws"}
 
     # Redirect to your show page that displays movie data
@@ -40,6 +42,7 @@ class MovieAppTest < MiniTest::Test
   end
 
   def test_finding_a_film_saves_it_in_the_db
+    skip
     post '/film', { :name => "Jaws"}
     assert_equal 1, Movie.count
     post '/film', { :name => "Jaws"}
@@ -47,21 +50,25 @@ class MovieAppTest < MiniTest::Test
   end
 
   def test_new_film_page
+    skip
     get '/new'
     assert last_response.ok?
   end
 
   def test_create_film
+    skip
     post '/create', { "title" => "Jaws 2"}
     assert_equal 1, Movie.count(:title => "Jaws 2")
   end
 
   def test_edit_film_page
+    skip
     get '/edit'
     assert last_response.ok?
   end
 
   def test_update_film
+    skip
     m = Movie.create!(:title => "Jaws")
     post '/update', { "id" => m.id, "title" => "Jaws 2"}
     assert_equal 1, Movie.count(:title => "Jaws 2")

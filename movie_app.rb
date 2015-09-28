@@ -4,6 +4,7 @@ require 'pry'
 require 'httparty'
 require 'json'
 require 'active_record'
+require 'sinatra/reloader'
 require_relative 'models/movie'
 
 configure do
@@ -19,13 +20,22 @@ get '/' do
   # Just have a nice welcome page
 end
 
+get '/:title' do
+  @movie = Movie.where('LOWER(title) LIKE ?', params[:title]).first
+  if @movie
+    return @movie.to_json
+  else
+    status 404
+    body ''
+  end
+end
+
 post '/film' do
   # Search for a Movie
   # HINT - what is in params ?
-  binding.pry
 
   # Lookup the film information on the web
-  film = Movie.get_film_info("jaws")
+  film = Movie.get_film_info(params[:name])
 
   # store the film in the database
 
