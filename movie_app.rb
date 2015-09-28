@@ -33,11 +33,12 @@ end
 post '/film' do
   # Search for a Movie
   # HINT - what is in params ?
+  @title = params[:name]
+  redirect('/') if (@title == '')
 
   # Lookup the film information on the web
-  film = Movie.get_film_info(params[:name])
-
+  film = Movie.get_film_info(@title)
   # store the film in the database
-
   # Display the movie in the page
+  redirect "/#{@title.downcase}"
 end

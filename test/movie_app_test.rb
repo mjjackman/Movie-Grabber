@@ -20,14 +20,12 @@ class MovieAppTest < MiniTest::Test
   end
 
   def test_missing_name_redirects_home
-    skip
     post '/film', { :name => ""}
     follow_redirect!
     assert_equal last_request.path, '/'
   end
 
   def test_finding_a_film_works
-    skip
     post '/film', { :name => "Jaws"}
 
     # Redirect to your show page that displays movie data
