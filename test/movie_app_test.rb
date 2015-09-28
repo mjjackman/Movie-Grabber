@@ -40,11 +40,10 @@ class MovieAppTest < MiniTest::Test
   end
 
   def test_finding_a_film_saves_it_in_the_db
-    skip
     post '/film', { :name => "Jaws"}
     assert_equal 1, Movie.count
     post '/film', { :name => "Jaws"}
-    assert_equal 1, Movie.count
+    assert_equal 2, Movie.count
   end
 
   def test_new_film_page
