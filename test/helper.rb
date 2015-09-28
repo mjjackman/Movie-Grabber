@@ -21,7 +21,7 @@ class MiniTest::Test
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.start
 
-    mock_data = File.read('test/jaws.json')
+    mock_data = JSON(File.read('test/jaws.json'))
     HTTParty.stubs(:get).returns(mock_data)
   end
 
