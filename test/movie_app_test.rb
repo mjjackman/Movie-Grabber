@@ -47,27 +47,23 @@ class MovieAppTest < MiniTest::Test
   end
 
   def test_new_film_page
-    skip
     get '/new'
     assert last_response.ok?
   end
 
   def test_create_film
-    skip
-    post '/create', { "title" => "Jaws 2"}
+    post '/create', { "movie" => { "title" => "Jaws 2"} }
     assert_equal 1, Movie.count(:title => "Jaws 2")
   end
 
   def test_edit_film_page
-    skip
     get '/edit'
     assert last_response.ok?
   end
 
   def test_update_film
-    skip
     m = Movie.create!(:title => "Jaws")
-    post '/update', { "id" => m.id, "title" => "Jaws 2"}
+    post '/update', { movie: { "id" => m.id, "title" => "Jaws 2"} }
     assert_equal 1, Movie.count(:title => "Jaws 2")
   end
 

@@ -4,7 +4,6 @@ require 'pry'
 require 'httparty'
 require 'json'
 require 'active_record'
-require 'sinatra/reloader'
 require_relative 'models/movie'
 
 configure do
@@ -18,6 +17,23 @@ end
 
 get '/' do
   # Just have a nice welcome page
+end
+
+get '/new' do
+end
+
+get '/edit' do
+end
+
+post '/create' do
+  @movie = Movie.create(params[:movie])
+  redirect "/#{@movie.title.downcase}"
+end
+
+post '/update' do
+  @movie = Movie.find(params[:movie][:id])
+  @movie.update_attributes(params[:movie])
+  redirect "/#{@movie.title.downcase}"
 end
 
 get '/:title' do
