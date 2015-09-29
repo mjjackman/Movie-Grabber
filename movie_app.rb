@@ -4,6 +4,7 @@ require 'pry'
 require 'httparty'
 require 'json'
 require 'active_record'
+require 'uri'
 require 'sinatra/reloader'
 require_relative 'models/movie'
 
@@ -17,7 +18,7 @@ configure do
 end
 
 def movie_url(movie)
-  "/#{@movie.title.downcase}"
+  URI.encode("/#{@movie.title.downcase}")
 end
 
 get '/' do
