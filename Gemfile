@@ -12,3 +12,4 @@ gem 'pry-byebug'
 gem 'database_cleaner'
 
 gem 'minitest'
+gem 'sinatra-contrib'
