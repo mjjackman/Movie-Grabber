@@ -45,7 +45,7 @@ end
 get '/:title' do
   @movie = Movie.where('LOWER(title) LIKE ?', params[:title]).first
   if @movie
-    return @movie.to_json
+    erb :movie
   else
     status 404
     body 'Movie not found'
@@ -56,11 +56,14 @@ post '/film' do
   # Search for a Movie
   # HINT - what is in params ?
   @title = params[:title]
-  redirect('/') if (@title == '')
 
   # Lookup the film information on the web
-  film = Movie.get_film_info(@title)
+  @movie = Movie.where('LOWER(title) LIKE ?', @title).first
+  redirect('/') if (@title == '')
+  unless @movie
+    @movie = Movie.get_film_info(@title)
+  end
   # store the film in the database
   # Display the movie in the page
-  redirect "/#{@title.downcase}"
+  redirect movie_url(@movie)
 end
