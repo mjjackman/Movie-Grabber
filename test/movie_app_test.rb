@@ -43,7 +43,7 @@ class MovieAppTest < MiniTest::Test
     post '/film', { :title => "Jaws"}
     assert_equal 1, Movie.count
     post '/film', { :title => "Jaws"}
-    assert_equal 2, Movie.count
+    assert_equal 1, Movie.count
   end
 
   def test_new_film_page
