@@ -2,13 +2,17 @@
 <html>
   <head>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
     <title>MovieGrabber</title>
  </head>
 
   <body>
-    <header class="page-header">
-      <h1>Movie <small>grabber</small></h1>
+    <header class="page-header row">
+      <img class="col-md-4 pull-left" src="http://wegotcoders.com/assets/logos/WEGOTCODERS_color-2d5337fdd03a9efd5c9d095a2d6b0622.png">
+      <a class="col-md-4 pull-right" href="/"><h1 class="text-danger">Movie <small>grabber</small></h1></a>
     </header>
-    <%= yield %>
+    <div class="fluid-container">
+      <%= yield %>
+    </div>
   </body>
 </html
