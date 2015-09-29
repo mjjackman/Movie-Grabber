@@ -4,6 +4,7 @@ require 'pry'
 require 'httparty'
 require 'json'
 require 'active_record'
+require 'sinatra/reloader'
 require_relative 'models/movie'
 
 configure do
@@ -13,6 +14,10 @@ configure do
     :adapter => db_config["adapter"],
     :database => db_config["database"]
   )
+end
+
+def movie_url(movie)
+  "/#{@movie.title.downcase}"
 end
 
 get '/' do
@@ -27,13 +32,13 @@ end
 
 post '/create' do
   @movie = Movie.create(params[:movie])
-  redirect "/#{@movie.title.downcase}"
+  redirect movie_url(@movie)
 end
 
 post '/update' do
   @movie = Movie.find(params[:movie][:id])
   @movie.update_attributes(params[:movie])
-  redirect "/#{@movie.title.downcase}"
+  redirect movie_url(@movie)
 end
 
 get '/:title' do
@@ -42,14 +47,14 @@ get '/:title' do
     return @movie.to_json
   else
     status 404
-    body ''
+    body 'Movie not found'
   end
 end
 
 post '/film' do
   # Search for a Movie
   # HINT - what is in params ?
-  @title = params[:name]
+  @title = params[:title]
   redirect('/') if (@title == '')
 
   # Lookup the film information on the web

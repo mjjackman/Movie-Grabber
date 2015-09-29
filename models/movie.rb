@@ -16,5 +16,6 @@ class Movie < ActiveRecord::Base
 
     # Store me in a database...
     m.save
+    m
   end
 end

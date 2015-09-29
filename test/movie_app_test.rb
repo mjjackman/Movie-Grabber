@@ -19,14 +19,14 @@ class MovieAppTest < MiniTest::Test
     assert_equal 404, last_response.status
   end
 
-  def test_missing_name_redirects_home
-    post '/film', { :name => ""}
+  def test_missing_title_redirects_home
+    post '/film', { :title => ""}
     follow_redirect!
     assert_equal last_request.path, '/'
   end
 
   def test_finding_a_film_works
-    post '/film', { :name => "Jaws"}
+    post '/film', { :title => "Jaws"}
 
     # Redirect to your show page that displays movie data
     follow_redirect!
@@ -40,9 +40,9 @@ class MovieAppTest < MiniTest::Test
   end
 
   def test_finding_a_film_saves_it_in_the_db
-    post '/film', { :name => "Jaws"}
+    post '/film', { :title => "Jaws"}
     assert_equal 1, Movie.count
-    post '/film', { :name => "Jaws"}
+    post '/film', { :title => "Jaws"}
     assert_equal 2, Movie.count
   end
 
