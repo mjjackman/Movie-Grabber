@@ -13,6 +13,7 @@ class Movie < ActiveRecord::Base
     m.writer  = imdb_data['Writer']
     m.actors  = imdb_data['Actors']
     m.description = imdb_data['Plot']
+    m.poster = imdb_data['Poster']
 
     # Store me in a database...
     m.save
