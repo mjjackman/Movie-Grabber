@@ -1,4 +1,4 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 gem 'sinatra'
 gem 'httparty'
@@ -9,6 +9,6 @@ gem 'activerecord'
 gem 'standalone_migrations'
 gem 'mocha'
 gem 'pry-byebug'
-gem 'rack', '< 1.6'
 gem 'database_cleaner'
-gem 'rack-test'
+
+gem 'minitest'
