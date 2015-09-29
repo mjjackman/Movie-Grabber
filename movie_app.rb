@@ -22,6 +22,7 @@ end
 
 get '/' do
   # Just have a nice welcome page
+  erb :home
 end
 
 get '/new' do
