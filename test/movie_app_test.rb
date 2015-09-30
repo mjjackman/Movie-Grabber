@@ -7,7 +7,7 @@ class MovieAppTest < MiniTest::Test
   end
 
   def test_visiting_a_film_page
-    Movie.create!(:title => "Jaws")
+    Movie.create!(title: 'Jaws')
     get '/jaws'
 
     assert last_response.ok?
@@ -20,13 +20,13 @@ class MovieAppTest < MiniTest::Test
   end
 
   def test_missing_title_redirects_home
-    post '/film', { :title => ""}
+    post '/film', title: ''
     follow_redirect!
     assert_equal last_request.path, '/'
   end
 
   def test_finding_a_film_works
-    post '/film', { :title => "Jaws"}
+    post '/film', title: 'Jaws'
 
     # Redirect to your show page that displays movie data
     follow_redirect!
@@ -40,9 +40,9 @@ class MovieAppTest < MiniTest::Test
   end
 
   def test_finding_a_film_saves_it_in_the_db
-    post '/film', { :title => "Jaws"}
+    post '/film', title: 'Jaws'
     assert_equal 1, Movie.count
-    post '/film', { :title => "Jaws"}
+    post '/film', title: 'Jaws'
     assert_equal 1, Movie.count
   end
 
@@ -52,8 +52,8 @@ class MovieAppTest < MiniTest::Test
   end
 
   def test_create_film
-    post '/create', { "movie" => { "title" => "Jaws 2"} }
-    assert_equal 1, Movie.count(:title => "Jaws 2")
+    post '/create', 'movie' => { 'title' => 'Jaws 2' }
+    assert_equal 1, Movie.count(title: 'Jaws 2')
   end
 
   def test_edit_film_page
@@ -62,9 +62,8 @@ class MovieAppTest < MiniTest::Test
   end
 
   def test_update_film
-    m = Movie.create!(:title => "Jaws")
-    post '/update', { movie: { "id" => m.id, "title" => "Jaws 2"} }
-    assert_equal 1, Movie.count(:title => "Jaws 2")
+    m = Movie.create!(title: 'Jaws')
+    post '/update', { movie: { 'id' => m.id, 'title' => 'Jaws 2' } }
+    assert_equal 1, Movie.count(title: 'Jaws 2')
   end
-
 end

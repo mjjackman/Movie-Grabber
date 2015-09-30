@@ -9,15 +9,15 @@ require 'sinatra/reloader'
 require_relative 'models/movie'
 
 configure do
-  db_config = YAML.load_file('db/config.yml')["development"]
+  db_config = YAML.load_file('db/config.yml')['development']
 
   ActiveRecord::Base.establish_connection(
-    :adapter => db_config["adapter"],
-    :database => db_config["database"]
+    adapter: db_config['adapter'],
+    database: db_config['database']
   )
 end
 
-def movie_url(movie)
+def movie_url(_movie)
   URI.encode("/#{@movie.title.downcase}")
 end
 
@@ -61,9 +61,7 @@ post '/film' do
   # Lookup the film information on the web
   @movie = Movie.where('LOWER(title) LIKE ?', @title).first
   redirect('/') if (@title == '')
-  unless @movie
-    @movie = Movie.get_film_info(@title)
-  end
+  @movie = Movie.get_film_info(@title) unless @movie
   # store the film in the database
   # Display the movie in the page
   redirect movie_url(@movie)

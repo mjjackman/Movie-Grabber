@@ -14,8 +14,8 @@ class MiniTest::Test
 
   def setup
     ActiveRecord::Base.establish_connection(
-      :adapter => 'sqlite3',
-      :database => 'db/test.db'
+      adapter: 'sqlite3',
+      database: 'db/test.db'
     )
 
     DatabaseCleaner.strategy = :truncation
