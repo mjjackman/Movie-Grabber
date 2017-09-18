@@ -1,6 +1,7 @@
 require './spec/helper'
+require 'pry'
 
-describe "MovieApp" do
+describe "FilmApp" do
   describe "GET to /" do
     before do
       get '/'
@@ -13,7 +14,7 @@ describe "MovieApp" do
 
   describe "with a previously created Film" do
     before do
-      Film.create!(title: 'Jaws', year: 1975, image_url: 'http://www.oscars.org/sites/oscars/files/01_jaws_main_0.jpg')
+      Film.create!(title: 'Jaws', year: 1975, poster: 'http://www.oscars.org/sites/oscars/files/01_jaws_main_0.jpg')
     end
 
     describe "GET show film" do
@@ -53,18 +54,18 @@ describe "MovieApp" do
     describe "with valid information" do
       before do
         post '/films', title: 'Jaws', year: 1975,
-        image_url: 'http://www.oscars.org/sites/oscars/files/01_jaws_main_0.jpg'
+        poster: 'http://www.oscars.org/sites/oscars/files/01_jaws_main_0.jpg'
       end
 
       it "does a 201 created" do
         last_response.status.must_equal 201
       end
 
-      it "saves the movie" do
+      it "saves the films" do
         Film.count.must_equal 1
         Film.first.title.must_equal 'Jaws'
         Film.first.year.must_equal 1975
-        Film.first.image_url.must_equal 'http://www.oscars.org/sites/oscars/files/01_jaws_main_0.jpg'
+        Film.first.poster.must_equal 'http://www.oscars.org/sites/oscars/files/01_jaws_main_0.jpg'
       end
     end
 
@@ -77,6 +78,29 @@ describe "MovieApp" do
         assert last_response.redirect?
         follow_redirect!
         last_request.path.must_equal '/'
+      end
+    end
+
+    describe "update the year" do
+      before do
+        Film.create!(title: 'Jaws', year: 1975, poster: 'http://www.oscars.org/sites/oscars/files/01_jaws_main_0.jpg')
+        put '/films/jaws', year: 2013
+      end
+
+      it 'updates the film' do
+        last_response.status.must_equal 205
+      end
+    end
+
+    describe "delete a film" do
+      before do
+        Film.create!(title: 'Jaws', year: 1975, poster: 'http://www.oscars.org/sites/oscars/files/01_jaws_main_0.jpg')
+        # binding.pry
+        delete '/films/jaws'
+      end
+
+      it 'deletes the film' do
+        last_response.status.must_equal 204
       end
     end
   end

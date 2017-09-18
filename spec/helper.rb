@@ -3,7 +3,7 @@ require 'minitest/pride'
 require 'rack/test'
 require 'database_cleaner'
 
-require './movie_app'
+require './film_app'
 
 class MiniTest::Test
   include Rack::Test::Methods
